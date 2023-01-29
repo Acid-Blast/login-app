@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Just Do It | LogIn</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Login</h1>
+            <a id="infoIcon" href="#"><img src="https://www.iconsdb.com/icons/preview/black/info-xxl.png" alt="info icon"></a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Login -->
+        <form id="form" action="app.html" method="GET" >
+            <label for="user">Usuario</label>
+            <input type="text" name="user" id="user" required>
+            <br>
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" id="pass" required>
+            <br>
+            <input type="submit" value="Ingresar">
+            <a href="#" id="btn-register">Registrarse</a>
+        </form>
+
+        <!-- Registro -->
+        <dialog class="modal" id="dialogReg">
+            <form id="formReg" action="index.html" method="GET" autocomplete="off">
+                <h2>Registro</h2>
+                <label for="user">Ingresar usuario</label>
+                <input id="userReg" type="text" name="user" required>
+
+                <label for="mail">Correo</label>
+                <input id="mailReg" type="email" name="mail" required>
+
+                <label for="pass">Contraseña</label>
+                <input id="passReg" type="password" name="pass" required minlength="5">
+
+                <label for="pass2">Repetir contraseña</label>
+                <input id="pass2Reg" type="password" name="pass2" required minlength="5">
+
+                <input type="submit" value="Registrarse">
+                <input id="salir" type="button" value=" X ">
+            </form>
+        </dialog>
+
+        <dialog id="dialog-alert" class="modal"></dialog>
+    </main>
+
+    <!-- archivos javascript -->
+    <script src="User.js"></script>
+    <script src="app.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

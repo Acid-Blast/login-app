@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --font-color: #eee;
+    --primary: #2f2f4d;
+    --primaryDark: #1f1f3a;
+    --secondary: #626970;
+    --lightgrey: #928995;
+    --dark: #11091a;
+    --bright: #bab195;
+    --brighter: #e8d18e;
+
+}
+
+body{
+    color: var(--font-color);
+    background-color: var(--primary);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a{
+    color: var(--font-color);
+    text-decoration: underline;
+}
+a:hover{
+    color: var(--secondary);
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding:1rem;
+    font-size: 3rem;
+    background-color: var(--primaryDark);    
+    box-shadow: 0 1px 7px var(--dark);
+}
+
+header nav a img{
+    width: 2.5rem;
+    filter: invert(1);
+    margin: .5rem;
+}
+header nav a img:hover{
+    opacity: .8;
+    cursor: pointer;
+}
+
+#form{
+    display: flex;
+    margin-top: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    gap: .7rem;
+}
+
+#form a{
+    font-size: 1rem;
+}
+
+#form input[type="submit"],
+.modal input[type="submit"],
+.modal #salir,
+#dialog-alert #btn-salir{
+    font-size: 1rem;
+    padding: .7rem;
+    border-radius: 30px;
+    background-color: var(--primaryDark);
+    color: var(--font-color);
+    border: none;
+    box-shadow: 1px 1px 5px var(--dark);
+    width: fit-content;
+}
+
+#form input[type="submit"]:hover,
+.modal input[type="submit"]:hover,
+.modal #salir:hover,
+#dialog-alert #btn-salir:hover{
+    box-shadow:inset 1px 1px 7px var(--dark);
+    cursor: pointer;
+}
+
+.modal{
+    width: 600px;
+    margin: auto auto;
+    padding: 1rem;
+    background-color: var(--primary);
+    outline: none;
+    border: none;
+    box-shadow: 0 0 10px var(--dark);
+    border-radius: 25px;
+}
+
+
+.modal h2{
+    text-align: center;
+    text-shadow: 1px 1px 5px var(--dark);
+    color: var(--font-color);
+    font-size: 2rem;
+}
+.modal h2::after{
+    content: " ";
+    display: block;
+    height: 1px;
+    width: 50%;
+    background-color: var(--dark);
+    margin: 1rem auto;
+    opacity: .6;
+}
+
+.modal::backdrop{
+    backdrop-filter: blur(10px);
+}
+.modal form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.modal form input,
+#form input{
+    color: var(--dark);
+    border: none;
+    padding: 5px;
+    border-bottom: 4px solid var(--brighter);
+    background-color: var(--lightgrey);
+    width: 400px;
+    font-size: 1.1rem;
+}
+.modal form input:focus,
+#form input:focus{
+    outline: none;
+    box-shadow: 1px 1px 20px var(--dark);
+    
+}
+
+.modal form label{
+    color: var(--font-color);
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+
+#dialog-alert{
+    text-align: center;
+    padding: 2rem;
+    margin: auto;
+    width: 600px;
+    height: fit-content;
+}
+
+#dialog-alert h2{
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+/* #dialog-alert h2::after{
+    content: none;
+} */
+#dialog-alert h3{
+    margin-top: 1rem;
+    color: var(--font-color);
+}
+
+#dialog-alert #btn-salir,
+.modal #salir{
+    background-color: var(--primaryDark);
+    color: var(--font-color);
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    border-radius: 100%;
+    font-size: 1rem;
+}
+
+
+
+
