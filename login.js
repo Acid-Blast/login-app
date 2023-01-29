@@ -50,13 +50,11 @@ btnRegistro.addEventListener("click", (e) => {
         const pass = document.getElementById("passReg");
         const pass2 = document.getElementById("pass2Reg");
     
-        if(validarUsuario(user.value, mail.value, pass.value, pass2.value)){
-            guardarUsuario(user.value, mail.value, pass.value);
+        let esValido = validarUsuario(user.value, mail.value, pass.value, pass2.value);
+
+        if (esValido){
             dialog.close();
-            user.value= "";
-            mail.value= "";
-            pass.value= "";
-            pass2.value= "";
+            limpiarForm(formReg);
         }
     });
 
@@ -68,23 +66,24 @@ const validarUsuario = (user, mail, pass, pass2) => {
     if(BBDD.find(e => e._user === user) != undefined){
         createModal("Error en registro", ` El usuario "${user}" ya está registrado`);
         return false;
-    }
-    if(BBDD.find(e => e._mail === mail) != undefined){
+    }else if(BBDD.find(e => e._mail === mail) != undefined){
         createModal("Error en registro", ` Ya existe una cuenta con el correo: "${mail}"`);
         return false;
-    }
-    if(pass != pass2){
+    }else if(pass != pass2){
         createModal("Error en registro", " Las contraseñas no coinciden");
         return false;
-    } 
+    } else {
+        createModal("Nuevo Usuario", `
+            Usuario creado con exito <br>
+            Nombre: <i>${user}</i> <br>
+            Correo: <i>${mail}</i> 
+        `);
+        guardarUsuario(user, mail, pass);
+        return true;
+    }
     
-    createModal("Nuevo Usuario", `
-        Usuario creado con exito <br>
-        Nombre: <i>${user}</i> <br>
-        Correo: <i>${mail}</i> 
-    `)
-    return true;
     
+
 }
 
 //crea un modal y lo muestra
@@ -120,7 +119,7 @@ const guardarUsuario = (user, mail, pass) => {
 
 //login
 const miForm = document.getElementById("form");
-miForm.addEventListener("submit", (e) => {
+    miForm.addEventListener("submit", (e) => {
 
     const user = document.getElementById("user");
     const pass = document.getElementById("pass");
@@ -129,9 +128,11 @@ miForm.addEventListener("submit", (e) => {
     let found = BBDD.find(e => (e._user === user.value && e._pass === pass.value));
     if(found == undefined){
         e.preventDefault();
-        alert(`Usuario o contraseña incorrectos`);
+        createModal("Login", "Usuario o contraseña Incorrectos")
     }else{
-        alert("Iniciando sesion");
+        e.preventDefault();
+        createModal("Login", "iniciando Sesion...");
+        limpiarForm(miForm);
     }
 });
 
@@ -143,3 +144,8 @@ info.addEventListener("click", () => {
     Proximamente este Login va a dar entrada a la App del proyecto final.
     `);
 });
+
+//limpia los valores del form
+const limpiarForm = (form) => {
+    form.reset();
+}
