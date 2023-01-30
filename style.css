@@ -41,6 +41,23 @@ header nav{
     box-shadow: 0 1px 7px var(--dark);
 }
 
+header nav div{
+    display: flex;
+}
+
+header nav div a{
+    align-self: center;
+}
+
+header nav div a img{
+    filter: none;
+    width: 4rem;
+}
+
+header nav div a img:hover{
+    opacity: 1;
+}
+
 header nav a img{
     width: 2.5rem;
     filter: invert(1);
@@ -189,4 +206,14 @@ footer{
     bottom: 7px;
     left: 7px;
     font-size: .7rem;
+}
+
+@media screen and (max-width: 600px) {
+
+    .modal,
+    .modal form input,
+    #form input{
+        width: 100%;
+    }
+
 }
