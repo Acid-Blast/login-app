@@ -61,7 +61,6 @@ btnRegistro.addEventListener("click", (e) => {
             
             salir.addEventListener("click", () => {window.location.reload()})
         }
-
     });
 });
 

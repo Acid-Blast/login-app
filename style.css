@@ -6,8 +6,7 @@
     --lightgrey: #928995;
     --dark: #11091a;
     --bright: #bab195;
-    --brighter: #e8d18e;   
-    --close: #f55;
+    --brighter: #e8d18e;
 }
 
 *{
@@ -174,7 +173,7 @@ header nav a img:hover{
 
 #dialog-alert #btn-salir,
 .modal #salir{
-    background-color: var(--brighter);
+    background-color: var(--bright);
     color: var(--dark);
     font-weight: bolder;
     position: absolute;
@@ -183,7 +182,6 @@ header nav a img:hover{
     border-radius: 30px;
     font-size: 1rem;
 }
-
 
 footer{
     text-align: center;
