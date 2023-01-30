@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root{
     --font-color: #eee;
     --primary: #2f2f4d;
@@ -7,12 +13,6 @@
     --dark: #11091a;
     --bright: #bab195;
     --brighter: #e8d18e;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 body{
