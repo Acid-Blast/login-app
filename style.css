@@ -1,9 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root{
     --font-color: #eee;
     --primary: #2f2f4d;
@@ -12,8 +6,14 @@
     --lightgrey: #928995;
     --dark: #11091a;
     --bright: #bab195;
-    --brighter: #e8d18e;
+    --brighter: #e8d18e;   
+    --close: #f55;
+}
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -174,15 +174,21 @@ header nav a img:hover{
 
 #dialog-alert #btn-salir,
 .modal #salir{
-    background-color: var(--primaryDark);
-    color: var(--font-color);
+    background-color: var(--brighter);
+    color: var(--dark);
+    font-weight: bolder;
     position: absolute;
-    top: 4px;
-    right: 5px;
-    border-radius: 100%;
+    top: 7px;
+    right: 7px;
+    border-radius: 30px;
     font-size: 1rem;
 }
 
 
-
-
+footer{
+    text-align: center;
+    position: absolute;
+    bottom: 7px;
+    left: 7px;
+    font-size: .7rem;
+}
