@@ -57,9 +57,8 @@ btnRegistro.addEventListener("click", (e) => {
         const pass2 = document.getElementById("pass2Reg");
     
         if(validarUsuario(user.value, mail.value, pass.value, pass2.value)){
-            const salir = document.getElementById("btn-salir");
-            
-            salir.addEventListener("click", () => {window.location.reload()})
+            limpiarForm(formReg)
+            recargarPagina()
         }
     });
 });
@@ -80,6 +79,7 @@ const miForm = document.getElementById("form");
         e.preventDefault();
         createModal("Login", "iniciando Sesion...");
         limpiarForm(miForm);
+        recargarPagina();
     }
 });
 
@@ -101,7 +101,6 @@ const guardarUsuario = (user, mail, pass) => {
 
 //devuelve false si no se valida la creacion y true si es valida
 const validarUsuario = (user, mail, pass, pass2) => {
-    console.count()
     if(BBDD.find(e => e._user === user) !== undefined){
         createModal("Error en registro", ` El usuario "${user}" ya está registrado`);
         return false;
@@ -150,4 +149,10 @@ const createModal = (titulo, mensaje) => {
 //limpia los valores del form
 const limpiarForm = (form) => {
     form.reset();
+}
+
+//recarga la pagina
+const recargarPagina = () => {
+    const salir = document.getElementById("btn-salir");
+    salir.addEventListener("click", () => {window.location.reload()});
 }
