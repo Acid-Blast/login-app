@@ -38,29 +38,37 @@ btnRegistro.addEventListener("click", (e) => {
           dialog.close();
         }
     }
-    
-    //envia los datos cargados para validar la creacion del usuario
-    const formReg = document.getElementById("formReg");
-    formReg.addEventListener("submit", (e) => {
-        e.preventDefault();
+});
 
-        const dialog = document.getElementById("dialogReg")
-        window.onclick = (e) => {
-            if (e.target == dialog) {
-              dialog.close();
-            }
+//envia los datos cargados para validar la creacion del usuario
+const formReg = document.getElementById("formReg");
+formReg.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("click en registrarse2")
+
+    const dialog = document.getElementById("dialogReg")
+    window.onclick = (e) => {
+        if (e.target == dialog) {
+          dialog.close();
         }
-        
-        const user = document.getElementById("userReg");
-        const mail = document.getElementById("mailReg");
-        const pass = document.getElementById("passReg");
-        const pass2 = document.getElementById("pass2Reg");
+    }
     
-        if(validarUsuario(user.value, mail.value, pass.value, pass2.value)){
-            limpiarForm(formReg)
-            recargarPagina()
-        }
-    });
+    const user = document.getElementById("userReg");
+    const mail = document.getElementById("mailReg");
+    const pass = document.getElementById("passReg");
+    const pass2 = document.getElementById("pass2Reg");
+
+    if(validarUsuario(user.value, mail.value, pass.value, pass2.value)){
+        guardarUsuario(user.value, mail.value, pass.value);
+        createModal("Nuevo Usuario", `
+            Usuario creado con exito <br>
+            Nombre: <i>${user.value}</i> <br>
+            Correo: <i>${mail.value}</i> 
+        `);
+        console.log("usuario guardado")
+        dialog.close()
+        // recargarPagina()
+    }
 });
 
 //login
@@ -101,34 +109,31 @@ const guardarUsuario = (user, mail, pass) => {
 
 //devuelve false si no se valida la creacion y true si es valida
 const validarUsuario = (user, mail, pass, pass2) => {
+    console.log("validando ususario")
     if(BBDD.find(e => e._user === user) !== undefined){
         createModal("Error en registro", ` El usuario "${user}" ya está registrado`);
         return false;
-    }else if(BBDD.find(e => e._mail === mail) != undefined){
+    }
+    if(BBDD.find(e => e._mail === mail) != undefined){
         createModal("Error en registro", ` Ya existe una cuenta con el correo: "${mail}"`);
         return false;
-    }else if(pass != pass2){
+    }
+    if(pass != pass2){
         createModal("Error en registro", " Las contraseñas no coinciden");
         return false;
-    } else {
-        guardarUsuario(user, mail, pass);
-        createModal("Nuevo Usuario", `
-            Usuario creado con exito <br>
-            Nombre: <i>${user}</i> <br>
-            Correo: <i>${mail}</i> 
-        `);
-        console.log("usuario guardado")
-        return true;
     }
+    return true;
 }
 
 //crea un modal y lo muestra
 const createModal = (titulo, mensaje) => {
     const modal = document.getElementById("dialog-alert");
+    const dialog = document.getElementById("dialogReg");
     modal.close();
     window.onclick = (e) => {
         if (e.target == modal) {
           modal.close();
+          dialog.close();
          }
     }
 
@@ -151,7 +156,7 @@ const limpiarForm = (form) => {
     form.reset();
 }
 
-//recarga la pagina
+//recarga la pagina para simular la creación de usuario o carga en login
 const recargarPagina = () => {
     const salir = document.getElementById("btn-salir");
     salir.addEventListener("click", () => {window.location.reload()});

@@ -50,8 +50,8 @@ header nav div a{
 }
 
 header nav div a img{
-    filter: none;
-    width: 4rem;
+    filter: invert(0);
+    width: 4.2rem;
 }
 
 header nav div a img:hover{
@@ -86,7 +86,7 @@ header nav a img:hover{
 .modal input[type="submit"],
 .modal #salir,
 #dialog-alert #btn-salir{
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: .7rem;
     border-radius: 30px;
     background-color: var(--primaryDark);
@@ -133,7 +133,7 @@ header nav a img:hover{
 }
 
 .modal::backdrop{
-    backdrop-filter: blur(120px);
+    backdrop-filter: blur(30px);
 }
 .modal form{
     display: flex;
@@ -157,14 +157,16 @@ header nav a img:hover{
 .modal form input:focus,
 #form input:focus{
     outline: none;
-    box-shadow: 1px 1px 20px var(--dark);
+    box-shadow: inset 1px 1px 10px var(--primary),
+        0px 2px 4px var(--brighter);
     
 }
 
-.modal form label{
+form label{
     color: var(--font-color);
-    font-size: 1.2rem;
-    text-decoration: underline;
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 5px var(--dark);
+
 }
 
 
@@ -179,10 +181,10 @@ header nav a img:hover{
 #dialog-alert h2{
     font-size: 1.4rem;
     text-decoration: none;
+        text-shadow: 1px 1px 5px var(--dark);
+
 }
-/* #dialog-alert h2::after{
-    content: none;
-} */
+
 #dialog-alert h3{
     margin-top: 1rem;
     color: var(--font-color);
@@ -190,8 +192,8 @@ header nav a img:hover{
 
 #dialog-alert #btn-salir,
 .modal #salir{
-    background-color: var(--bright);
-    color: var(--dark);
+    background-color: var(--primaryDark);
+    color: var(--brighter);
     font-weight: bolder;
     position: absolute;
     top: 7px;
