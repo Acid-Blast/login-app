@@ -1,10 +1,5 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root{
+    --version: "1.10.1";
     --font-color: #eee;
     --primary: #2f2f4d;
     --primaryDark: #1f1f3a;
@@ -13,6 +8,12 @@
     --dark: #11091a;
     --bright: #bab195;
     --brighter: #e8d18e;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -208,6 +209,10 @@ footer{
     bottom: 7px;
     left: 7px;
     font-size: .7rem;
+}
+
+footer h4::after{
+    content: " - v" var(--version);
 }
 
 @media screen and (max-width: 600px) {

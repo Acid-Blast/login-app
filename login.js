@@ -67,7 +67,7 @@ formReg.addEventListener("submit", (e) => {
         `);
         console.log("usuario guardado")
         dialog.close()
-        // recargarPagina()
+        limpiarForm(formReg);
     }
 });
 
@@ -87,7 +87,6 @@ const miForm = document.getElementById("form");
         e.preventDefault();
         createModal("Login", "iniciando Sesion...");
         limpiarForm(miForm);
-        recargarPagina();
     }
 });
 
@@ -154,10 +153,4 @@ const createModal = (titulo, mensaje) => {
 //limpia los valores del form
 const limpiarForm = (form) => {
     form.reset();
-}
-
-//recarga la pagina para simular la creación de usuario o carga en login
-const recargarPagina = () => {
-    const salir = document.getElementById("btn-salir");
-    salir.addEventListener("click", () => {window.location.reload()});
 }
