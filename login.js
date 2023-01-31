@@ -132,7 +132,6 @@ const createModal = (titulo, mensaje) => {
     window.onclick = (e) => {
         if (e.target == modal) {
           modal.close();
-          dialog.close();
          }
     }
 
