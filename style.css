@@ -1,5 +1,5 @@
 :root{
-    --version: "1.10.2";
+    --version: "v1.10.2";
     --font-color: #eee;
     --primary: #2f2f4d;
     --primaryDark: #1f1f3a;
@@ -69,6 +69,10 @@ header nav a img:hover{
     cursor: pointer;
 }
 
+dialog{
+    transition: all 3s;
+}
+
 #form{
     display: flex;
     margin-top: 2rem;
@@ -117,11 +121,13 @@ header nav a img:hover{
 }
 
 
-.modal h2{
+.modal h2,
+form h2{
     text-align: center;
     text-shadow: 1px 1px 5px var(--dark);
     color: var(--font-color);
     font-size: 2rem;
+    margin-bottom: 2rem;
 }
 .modal h2::after{
     content: " ";
@@ -212,7 +218,7 @@ footer{
 }
 
 footer h4::after{
-    content: " - v" var(--version);
+    content: var(--version);
 }
 
 @media screen and (max-width: 600px) {
