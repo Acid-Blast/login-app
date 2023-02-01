@@ -1,6 +1,17 @@
 :root{
     --version: "v1.11.1";
     --font-color: #eee;
+    --primary: #1F8A70;
+    --primaryDark: #00425A;
+    --secondary: #626970;
+    --lightgrey: #92899555;
+    --dark: #11091a;
+    --brighter: #BFDB38;
+    --exit: #FC7300;
+}
+/* :root{
+    --version: "v1.11.1";
+    --font-color: #eee;
     --primary: #2f2f4d;
     --primaryDark: #1f1f3a;
     --secondary: #626970;
@@ -8,7 +19,7 @@
     --dark: #11091a;
     --brighter: #2acd72;
     --exit: #dd4a6a;
-}
+} */
 
 *{
     margin: 0;
@@ -27,7 +38,7 @@ a{
     text-decoration: underline;
 }
 a:hover{
-    color: var(--secondary);
+    color: var(--brighter);
 }
 
 header nav{
@@ -102,6 +113,7 @@ header nav a img:hover{
 .modal input[type="submit"]:hover{
     box-shadow:inset 1px 1px 7px var(--dark);
     cursor: pointer;
+    color: var(--brighter);
 }
 
 .modal{
@@ -111,7 +123,7 @@ header nav a img:hover{
     background-color: var(--primary);
     outline: none;
     border: none;
-    box-shadow: 0 0 10px var(--dark);
+    box-shadow: 0 0 10px var(--exit);
     border-radius: 25px;
 }
 
@@ -174,6 +186,7 @@ input{
     padding: 5px;
     border-bottom: 4px solid var(--brighter);
     background-color: var(--lightgrey);
+    box-shadow: 0 2px 4px var(--dark);
     width: 400px;
     font-size: 1.1rem;
 }
@@ -182,6 +195,10 @@ input:focus{
     box-shadow: inset 0 0 10px var(--brighter),
         0 0 7px var(--brighter);
     
+}
+input::placeholder{
+    color: var(--font-color);
+    opacity: .5;
 }
 
 form label{
@@ -203,7 +220,7 @@ form label{
 #dialog-alert h2{
     font-size: 1.4rem;
     text-decoration: none;
-        text-shadow: 1px 1px 5px var(--dark);
+    text-shadow: 1px 1px 5px var(--dark);
 
 }
 
@@ -212,6 +229,7 @@ form label{
     color: var(--font-color);
     font-size: 1rem;
     font-weight: bold;
+    text-shadow: 1px 1px 5px var(--dark);
 }
 
 .modal .exit{
@@ -229,7 +247,7 @@ form label{
 }
 .modal .exit:hover,
 .modal .exit:active{
-    box-shadow: 0 0 7px var(--dark);
+    box-shadow: inset 0 0 10px var(--dark), 0 2px 5px var(--dark);
     cursor: pointer;
 }
 
@@ -244,6 +262,35 @@ footer{
 footer h4::after{
     content: var(--version);
 }
+
+aside{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+aside #btn-theme{
+    transition: all .3s;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--secondary);
+    color: var(--font-color);
+    text-shadow: 0 1px 4px var(--dark);
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    box-shadow: inset 0 0 15px var(--primaryDark);
+}
+aside #btn-theme:hover{
+    cursor: pointer;
+    box-shadow: inset 0 0 20px #000, 0 3px 7px var(--primaryDark);
+}
+aside #btn-theme:active{
+    transform: scale(0.95);
+}
+
 
 @media screen and (max-width: 600px) {
 

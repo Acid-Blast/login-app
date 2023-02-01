@@ -16,7 +16,7 @@ Login:
 let BBDD = JSON.parse(localStorage.getItem("users"));
 //si es la primera vez, crea un array vacio
 if(BBDD == null) BBDD = [];
-console.log(BBDD);
+console.log("users", BBDD);
 
 //Abre modal de registro
 const btnRegistro = document.getElementById("btn-register");
@@ -35,6 +35,7 @@ btnRegistro.addEventListener("click", (e) => {
     });
 });
 
+
 //Registro - Envia los datos para validarlos y guardar ususario
 const formReg = document.getElementById("formReg");
 formReg.addEventListener("submit", (e) => {
@@ -51,7 +52,7 @@ formReg.addEventListener("submit", (e) => {
     if(validarUsuario(user.value, mail.value, pass.value, pass2.value, date.value)){
         guardarUsuario(user.value, mail.value, pass.value, date.value, edad);
         createModal("Nuevo Usuario", `
-            Usuario creado con exito <br>
+            Usuario creado con exito <br><br>
             Nombre: <i>${user.value}</i> <br>
             Correo: <i>${mail.value}</i> <br>
             Edad: <i>${edad}</i>
@@ -73,13 +74,10 @@ const miForm = document.getElementById("form");
     let found = BBDD.find(e => (e._user === user.value && e._pass === pass.value));
     if(!found){
         e.preventDefault();
-        createModal("Iniciar sesion", "Usuario o contraseña Incorrectos")
+        createModal("Error", "Usuario o contraseña Incorrectos")
     }else{
         e.preventDefault();
-        createModal("iniciar sesion", `
-            Iniciando Sesion... <br>
-            Usuario: ${user.value}
-        `);
+        createModal("Iniciando sesion...", `Conectando usuario: <i>${user.value}</i>`);
         limpiarForm(miForm);
     }
 });
@@ -98,7 +96,7 @@ info.addEventListener("click", () => {
 const guardarUsuario = (user, mail, pass, date, edad) => {
     BBDD.push(new User({_user: user, _mail: mail, _pass: pass, _date: date, _age: edad}));
     localStorage.setItem("users", JSON.stringify(BBDD));
-    console.log(BBDD);
+    console.log("users", BBDD);
 }
 
 //devuelve false si no se valida la creacion y true si es valida

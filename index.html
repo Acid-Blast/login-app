@@ -21,7 +21,7 @@
 
     <main>
         <!-- Login -->
-        <form id="form" action="index.html" method="get" >
+        <form id="form" action="index.html" method="get"autocomplete="off">
             <h2>Iniciar sesión</h2>
             <label for="user">Usuario</label>
             <input type="text" name="user" id="user" required>
@@ -38,10 +38,10 @@
             <form id="formReg" action="index.html" method="GET" autocomplete="off">
                 <h2>Registro</h2>
                 <label for="user">Ingresar usuario</label>
-                <input id="userReg" type="text" name="user" required>
+                <input id="userReg" type="text" name="user" required placeholder="Nombre de Usuario">
 
                 <label for="mail">Correo</label>
-                <input id="mailReg" type="email" name="mail" required>
+                <input id="mailReg" type="email" name="mail" required placeholder="ejemplo@mail.com">
 
                 <label for="date">Fecha de nacimiento</label>
                 <input id="dateReg" name="date" type="date" required>
@@ -58,6 +58,10 @@
         </dialog>
 
         <dialog id="dialog-alert" class="modal"></dialog>
+
+        <aside>
+            <button id="btn-theme">Cambiar tema!</button>
+        </aside>
     </main>
 
     <footer>
