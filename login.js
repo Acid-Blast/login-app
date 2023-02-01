@@ -23,14 +23,15 @@ const btnRegistro = document.getElementById("btn-register");
 btnRegistro.addEventListener("click", (e) => {
     e.preventDefault();
     
-    const dialog = document.querySelector("#dialogReg");
-    const salir = document.getElementById("salir");
-    
     //abre el modal de registro
+    const dialog = document.getElementById("dialogReg");
     dialog.showModal();
-    clickAfuera();
+
+    //para cerrar el modal
+    const salir = document.getElementById("salir");
     salir.addEventListener("click", () => {
         dialog.close();
+        dialog.removeAttribute(open);
     });
 });
 
@@ -38,7 +39,6 @@ btnRegistro.addEventListener("click", (e) => {
 const formReg = document.getElementById("formReg");
 formReg.addEventListener("submit", (e) => {
     e.preventDefault();
-    clickAfuera();
 
     const dialog = document.getElementById("dialogReg")
     const user = document.getElementById("userReg");
@@ -57,7 +57,7 @@ formReg.addEventListener("submit", (e) => {
             Edad: <i>${edad}</i>
         `);
         console.log("usuario guardado");
-        dialog.close()
+        dialog.close();
         limpiarForm(formReg);
     }
 });
@@ -71,7 +71,7 @@ const miForm = document.getElementById("form");
 
     //compara los datos ingresados con el Local Storage, si no existen, previene la accion del form, si existe, inicia sesion
     let found = BBDD.find(e => (e._user === user.value && e._pass === pass.value));
-    if(found == undefined){
+    if(!found){
         e.preventDefault();
         createModal("Iniciar sesion", "Usuario o contraseña Incorrectos")
     }else{
@@ -128,19 +128,20 @@ const validarUsuario = (user, mail, pass, pass2, date) => {
 //crea un modal y lo muestra
 const createModal = (titulo, mensaje) => {
     const modal = document.getElementById("dialog-alert");
-
     modal.innerHTML = `
-            <h2> ${titulo} </h2>
-            <h3> ${mensaje} </h3>
-            <button id="btn-salir"> X </button>
-        `;
+    <h2> ${titulo} </h2>
+    <div> ${mensaje} </div>
+    <button id="btn-salir" class="exit" type="button"> X </button>
+    `;
+    modal.showModal();
 
-    modal.showModal()
+    clickAfuera();
     const salir = document.getElementById("btn-salir");
     salir.addEventListener("click", () => {
         modal.removeAttribute(open);
         modal.close();
     });
+    console.log("modal creado")
 }
 
 //limpia los valores del form
@@ -160,13 +161,9 @@ const calcularEdad = (date) => {
 //como alternativa al boton salir
 const clickAfuera = () => {
     const modal = document.getElementById("dialog-alert");
-    const dialog = document.getElementById("dialogReg");
     window.onclick = (e) => {
         if (e.target == modal) {
             modal.close();
-        }
-        if (e.target == dialog) {
-            dialog.close()
         }
     }
 }

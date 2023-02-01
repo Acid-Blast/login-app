@@ -1,13 +1,13 @@
 :root{
-    --version: "v1.10.2";
+    --version: "v1.11.1";
     --font-color: #eee;
     --primary: #2f2f4d;
     --primaryDark: #1f1f3a;
     --secondary: #626970;
     --lightgrey: #928995;
     --dark: #11091a;
-    --bright: #bab195;
-    --brighter: #e8d18e;
+    --brighter: #2acd72;
+    --exit: #dd4a6a;
 }
 
 *{
@@ -44,6 +44,8 @@ header nav{
 
 header nav div{
     display: flex;
+    align-items: flex-start;
+    font-size: 2.6rem;
 }
 
 header nav div a{
@@ -69,9 +71,6 @@ header nav a img:hover{
     cursor: pointer;
 }
 
-dialog{
-    transition: all 3s;
-}
 
 #form{
     display: flex;
@@ -80,7 +79,7 @@ dialog{
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    gap: .7rem;
+    gap: 1rem;
 }
 
 #form a{
@@ -88,9 +87,7 @@ dialog{
 }
 
 #form input[type="submit"],
-.modal input[type="submit"],
-.modal #salir,
-#dialog-alert #btn-salir{
+.modal input[type="submit"]{
     font-size: 1.4rem;
     padding: .7rem;
     border-radius: 30px;
@@ -102,17 +99,15 @@ dialog{
 }
 
 #form input[type="submit"]:hover,
-.modal input[type="submit"]:hover,
-.modal #salir:hover,
-#dialog-alert #btn-salir:hover{
+.modal input[type="submit"]:hover{
     box-shadow:inset 1px 1px 7px var(--dark);
     cursor: pointer;
 }
 
 .modal{
-    width: 600px;
+    width: fit-content;
     margin: auto auto;
-    padding: 1rem;
+    padding: 2rem;
     background-color: var(--primary);
     outline: none;
     border: none;
@@ -120,6 +115,27 @@ dialog{
     border-radius: 25px;
 }
 
+/*scrollbar*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 1rem;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primaryDark);
+    border-radius: 1rem;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1f1f3abb;
+}
 
 .modal h2,
 form h2{
@@ -127,7 +143,7 @@ form h2{
     text-shadow: 1px 1px 5px var(--dark);
     color: var(--font-color);
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .modal h2::after{
     content: " ";
@@ -151,8 +167,8 @@ form h2{
     padding: 1rem;
 }
 
-.modal form input,
-#form input{
+
+input{
     color: var(--dark);
     border: none;
     padding: 5px;
@@ -161,11 +177,10 @@ form h2{
     width: 400px;
     font-size: 1.1rem;
 }
-.modal form input:focus,
-#form input:focus{
+input:focus{
     outline: none;
-    box-shadow: inset 1px 1px 10px var(--primary),
-        0px 2px 4px var(--brighter);
+    box-shadow: inset 0 0 10px var(--brighter),
+        0 0 7px var(--brighter);
     
 }
 
@@ -192,21 +207,30 @@ form label{
 
 }
 
-#dialog-alert h3{
+#dialog-alert div{
     margin-top: 1rem;
     color: var(--font-color);
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-#dialog-alert #btn-salir,
-.modal #salir{
+.modal .exit{
+    width: 2.3rem;
+    height: 2.3rem;
+    border: none;
+    border-radius: 50%;
     background-color: var(--primaryDark);
-    color: var(--brighter);
+    color: var(--exit);
     font-weight: bolder;
     position: absolute;
     top: 7px;
     right: 7px;
-    border-radius: 30px;
     font-size: 1rem;
+}
+.modal .exit:hover,
+.modal .exit:active{
+    box-shadow: 0 0 7px var(--dark);
+    cursor: pointer;
 }
 
 footer{
