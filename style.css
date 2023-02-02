@@ -102,8 +102,8 @@ header nav a img:hover{
     font-size: 1.4rem;
     padding: .7rem;
     border-radius: 30px;
-    background-color: var(--primaryDark);
-    color: var(--font-color);
+    background-color: var(--brighter);
+    color: var(--dark);
     border: none;
     box-shadow: 1px 1px 5px var(--dark);
     width: fit-content;
@@ -111,16 +111,16 @@ header nav a img:hover{
 
 #form input[type="submit"]:hover,
 .modal input[type="submit"]:hover{
-    box-shadow:inset 1px 1px 7px var(--dark);
+    box-shadow:inset 0 0 10px var(--primaryDark), 0 2px 4px var(--dark);
     cursor: pointer;
-    color: var(--brighter);
+    /* color: var(--brighter); */
 }
 
 .modal{
     width: fit-content;
     margin: auto auto;
     padding: 2rem;
-    background-color: var(--primary);
+    background-color: var(--primaryDark);
     outline: none;
     border: none;
     box-shadow: 0 0 10px var(--exit);
@@ -181,7 +181,8 @@ form h2{
 
 
 input{
-    color: var(--dark);
+    color: var(--font-color);
+    text-shadow: 0 2px 5px var(--dark);
     border: none;
     padding: 5px;
     border-bottom: 4px solid var(--brighter);
@@ -237,8 +238,9 @@ form label{
     height: 2.3rem;
     border: none;
     border-radius: 50%;
-    background-color: var(--primaryDark);
-    color: var(--exit);
+    background-color: var(--exit);
+    box-shadow: inset 0 0 7px var(--dark);
+    color: var(--dark);
     font-weight: bolder;
     position: absolute;
     top: 7px;
@@ -271,7 +273,7 @@ aside{
     margin-top: 2rem;
 }
 aside #btn-theme{
-    transition: all .3s;
+    transition: box-shadow .3s;
     padding: 1rem;
     border: none;
     border-radius: 30px;
@@ -287,8 +289,10 @@ aside #btn-theme:hover{
     cursor: pointer;
     box-shadow: inset 0 0 20px #000, 0 3px 7px var(--primaryDark);
 }
-aside #btn-theme:active{
+button:active,
+input[type="submit"]:active{
     transform: scale(0.95);
+
 }
 
 

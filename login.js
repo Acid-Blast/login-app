@@ -13,10 +13,8 @@ Login:
 */
 
 //cargo en una variable el contenido del Local Storage
-let BBDD = JSON.parse(localStorage.getItem("users"));
 //si es la primera vez, crea un array vacio
-if(BBDD == null) BBDD = [];
-console.log("users", BBDD);
+let BBDD = JSON.parse(localStorage.getItem("users")) || [];
 
 //Abre modal de registro
 const btnRegistro = document.getElementById("btn-register");
