@@ -1,25 +1,26 @@
 :root{
     --version: "v1.11.1";
-    --font-color: #eee;
-    --primary: #1F8A70;
-    --primaryDark: #00425A;
-    --secondary: #626970;
-    --lightgrey: #92899555;
+    --input-back: #92899544;
     --dark: #11091a;
-    --brighter: #BFDB38;
-    --exit: #FC7300;
+
+    --font-color: #eee;
+    --primary: #301E67;
+    --primaryDark: #03001C;
+    --brighter: #B6EADA;
+    --exit: #5B8FB9;
 }
 /* :root{
     --version: "v1.11.1";
+    --input-back: #92899544;
+    --dark: #11091a;
+
     --font-color: #eee;
     --primary: #2f2f4d;
     --primaryDark: #1f1f3a;
-    --secondary: #626970;
-    --lightgrey: #928995;
-    --dark: #11091a;
     --brighter: #2acd72;
     --exit: #dd4a6a;
 } */
+
 
 *{
     margin: 0;
@@ -29,7 +30,9 @@
 
 body{
     color: var(--font-color);
-    background-color: var(--primary);
+    background-image: linear-gradient(to bottom right, var(--primary) 10%, var(--brighter));
+    background-attachment: fixed;
+    /* background-color: var(--primary); */
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -186,7 +189,7 @@ input{
     border: none;
     padding: 5px;
     border-bottom: 4px solid var(--brighter);
-    background-color: var(--lightgrey);
+    background-color: var(--input-back);
     box-shadow: 0 2px 4px var(--dark);
     width: 400px;
     font-size: 1.1rem;
@@ -272,27 +275,34 @@ aside{
     gap: 2rem;
     margin-top: 2rem;
 }
-aside #btn-theme{
-    transition: box-shadow .3s;
-    padding: 1rem;
+aside .dark-mode{
+    transition: box-shadow .2s;
+    width: 4rem;
+    height: 4rem;
     border: none;
-    border-radius: 30px;
-    background-color: var(--secondary);
+    border-radius: 100%;
+    background-color: var(--primaryDark);
     color: var(--font-color);
     text-shadow: 0 1px 4px var(--dark);
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: bold;
     margin-left: 2rem;
-    box-shadow: inset 0 0 15px var(--primaryDark);
+    box-shadow:  0 0 25px var(--dark);
 }
+
 aside #btn-theme:hover{
     cursor: pointer;
-    box-shadow: inset 0 0 20px #000, 0 3px 7px var(--primaryDark);
+    opacity: .8;
+    box-shadow: 0 0 15px var(--dark),
+    inset 0 0 25px black;
 }
 button:active,
 input[type="submit"]:active{
     transform: scale(0.95);
 
+}
+aside button img{
+    width: 4rem;
 }
 
 

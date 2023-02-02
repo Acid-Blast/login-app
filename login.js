@@ -85,10 +85,41 @@ const info = document.getElementById("infoIcon");
 info.addEventListener("click", () => {
     clickAfuera();
     createModal("Info", `
-    Alumno: <i>Marcelo Falasca</i> <br><br>
-    Proximamente este Login va a dar entrada a la App del proyecto final.
+        Alumno: <i>Marcelo Falasca</i> <br><br>
+        Proximamente este Login va a dar entrada a la App del proyecto final.
     `);
 });
+
+//boton de cambiar tema
+const theme = document.getElementById("btn-theme");
+theme.addEventListener("click", () => {
+    const root = document.querySelector(":root");
+
+    if(theme.getAttribute("darkMode") == "true"){
+        //lightmode
+        theme.setAttribute("darkMode", "false");
+
+        root.style.setProperty("--font-color", "#222");
+        root.style.setProperty("--primary", "#FFD4B2");
+        root.style.setProperty("--primaryDark", "#86C8BC");
+        root.style.setProperty("--brighter", "#FFF6BD");
+        root.style.setProperty("--exit", "#FFD4B2");
+        
+    }else {
+        //darkmode (original)
+        theme.setAttribute("darkMode", "true");
+
+        root.style.setProperty("--font-color", "#eee");
+        root.style.setProperty("--primary", "#301E67");
+        root.style.setProperty("--primaryDark", "#03001C");
+        root.style.setProperty("--brighter", "#B6EADA");
+        root.style.setProperty("--exit", "#5B8FB9");
+
+    }
+    
+});
+
+// ------------------ Funciones ------------------
 
 //agrega el usuario al storage mientras no sea un string vacio o null
 const guardarUsuario = (user, mail, pass, date, edad) => {
