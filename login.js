@@ -57,7 +57,6 @@ formReg.addEventListener("submit", (e) => {
             Nuevo usuario <br><br>
             Nombre: <i>${user.value}</i> <br>
             Correo: <i>${mail.value}</i> <br>
-            Edad: <i>${edad}</i>
         `);
          dialog.close();
         limpiarForm(formReg);

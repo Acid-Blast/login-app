@@ -1,6 +1,7 @@
 /* variables */
 :root{
     --version: "v1.12.4";
+
     --input-back: #92899566;
     --dark: #11091a;
     --font-color: #eee;
@@ -110,17 +111,18 @@ header nav a img:hover{
 .modal input[type="submit"]:hover{
     box-shadow:inset 0 0 10px var(--primaryDark), 0 2px 4px var(--dark);
     cursor: pointer;
-    /* color: var(--brighter); */
 }
 
 .modal{
     width: fit-content;
     margin: auto auto;
     padding: 2rem;
-    background-color: var(--primaryDark);
+    background-color: #fff1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     outline: none;
     border: none;
-    box-shadow: 0 0 10px var(--exit);
+    box-shadow: inset 0 0 20px var(--primaryDark);
     border-radius: 25px;
 }
 
