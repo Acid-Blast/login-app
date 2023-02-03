@@ -76,7 +76,10 @@ const miForm = document.getElementById("form");
         createModal("Error", "Usuario o contraseña Incorrectos")
     }else{
         e.preventDefault();
-        createModal("Iniciando sesion...", `Conectando usuario: <i>${user.value}</i>`);
+        createModal("Iniciando sesion...",`
+            Conectando usuario: <i>${user.value}</i><br>
+            <div class="loading"> ${loadingAnimation()} </div>
+        `);
         limpiarForm(miForm);
     }
 });
@@ -106,15 +109,19 @@ theme.addEventListener("click", () => {
         root.style.setProperty("--primaryDark", "#86C8BC");
         root.style.setProperty("--brighter", "#FFF6BD");
         root.style.setProperty("--exit", "#FFD4B2");
+        document.getElementById("dark-mode-img").style.filter = "invert(1)";
+        document.getElementById("dark-mode-img").style.transform = "rotate(180deg)";
     }else {
         //darkmode (original)
         theme.setAttribute("darkMode", "true");
-
+        
         root.style.setProperty("--font-color", "#eee");
         root.style.setProperty("--primary", "#301E67");
         root.style.setProperty("--primaryDark", "#03001C");
         root.style.setProperty("--brighter", "#B6EADA");
         root.style.setProperty("--exit", "#5B8FB9");
+        document.getElementById("dark-mode-img").style.filter = "invert(0)";
+        document.getElementById("dark-mode-img").style.transform = "rotate(-180deg)";
     }
     
 });
@@ -193,4 +200,8 @@ const clickAfuera = () => {
             modal.close();
         }
     }
+}
+
+const loadingAnimation = () => {
+    
 }
