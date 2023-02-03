@@ -56,7 +56,6 @@ formReg.addEventListener("submit", (e) => {
             Correo: <i>${mail.value}</i> <br>
             Edad: <i>${edad}</i>
         `);
-        console.log("usuario guardado");
         dialog.close();
         limpiarForm(formReg);
     }
@@ -78,7 +77,6 @@ const miForm = document.getElementById("form");
         e.preventDefault();
         createModal("Iniciando sesion...",`
             Conectando usuario: <i>${user.value}</i><br>
-            <div class="loading"> ${loadingAnimation()} </div>
         `);
         limpiarForm(miForm);
     }
@@ -97,21 +95,18 @@ info.addEventListener("click", () => {
 //boton de cambiar tema
 const theme = document.getElementById("btn-theme");
 theme.addEventListener("click", () => {
-    //
     const root = document.querySelector(":root");
 
-    if(theme.getAttribute("darkMode") == "true"){
-        //lightmode
-        theme.setAttribute("darkMode", "false");
+    const estilosLight = [
+        
+    ];
 
-        root.style.setProperty("--font-color", "#222");
-        root.style.setProperty("--primary", "#FFD4B2");
-        root.style.setProperty("--primaryDark", "#86C8BC");
-        root.style.setProperty("--brighter", "#FFF6BD");
-        root.style.setProperty("--exit", "#FFD4B2");
-        document.getElementById("dark-mode-img").style.filter = "invert(1)";
-        document.getElementById("dark-mode-img").style.transform = "rotate(180deg)";
-    }else {
+    const estilosDark = [
+        
+    ];
+    
+    
+    if(theme.getAttribute("darkMode") == "false"){
         //darkmode (original)
         theme.setAttribute("darkMode", "true");
         
@@ -122,6 +117,17 @@ theme.addEventListener("click", () => {
         root.style.setProperty("--exit", "#5B8FB9");
         document.getElementById("dark-mode-img").style.filter = "invert(0)";
         document.getElementById("dark-mode-img").style.transform = "rotate(-180deg)";
+    }else {
+        //lightmode
+        theme.setAttribute("darkMode", "false");
+        
+        root.style.setProperty("--font-color", "#222");
+        root.style.setProperty("--primary", "#FFD4B2");
+        root.style.setProperty("--primaryDark", "#86C8BC");
+        root.style.setProperty("--brighter", "#FFF6BD");
+        root.style.setProperty("--exit", "#FFD4B2");
+        document.getElementById("dark-mode-img").style.filter = "invert(1)";
+        document.getElementById("dark-mode-img").style.transform = "rotate(180deg)";
     }
     
 });
@@ -132,12 +138,10 @@ theme.addEventListener("click", () => {
 const guardarUsuario = (user, mail, pass, date, edad) => {
     BBDD.push(new User({_user: user, _mail: mail, _pass: pass, _date: date, _age: edad}));
     localStorage.setItem("users", JSON.stringify(BBDD));
-    console.log("users", BBDD);
 }
 
 //devuelve false si no se valida la creacion y true si es valida
 const validarUsuario = (user, mail, pass, pass2, date) => {
-    console.log("validando ususario");
     let error = "Error en registro";
 
     if(BBDD.find(e => e._user === user) !== undefined){
@@ -175,7 +179,6 @@ const createModal = (titulo, mensaje) => {
         modal.removeAttribute(open);
         modal.close();
     });
-    console.log("modal creado")
 }
 
 //limpia los valores del form
@@ -200,8 +203,4 @@ const clickAfuera = () => {
             modal.close();
         }
     }
-}
-
-const loadingAnimation = () => {
-    
 }
