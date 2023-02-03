@@ -1,6 +1,6 @@
 :root{
-    --version: "v1.11.1";
-    --input-back: #92899544;
+    --version: "v1.12.1";
+    --input-back: #92899566;
     --dark: #11091a;
 
     --font-color: #eee;
@@ -9,18 +9,6 @@
     --brighter: #B6EADA;
     --exit: #5B8FB9;
 }
-/* :root{
-    --version: "v1.11.1";
-    --input-back: #92899544;
-    --dark: #11091a;
-
-    --font-color: #eee;
-    --primary: #2f2f4d;
-    --primaryDark: #1f1f3a;
-    --brighter: #2acd72;
-    --exit: #dd4a6a;
-} */
-
 
 *{
     margin: 0;
@@ -277,8 +265,11 @@ aside{
 }
 aside .dark-mode{
     transition: box-shadow .2s;
-    width: 4rem;
-    height: 4rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
     border: none;
     border-radius: 100%;
     background-color: var(--primaryDark);
@@ -302,16 +293,14 @@ input[type="submit"]:active{
 
 }
 aside button img{
-    width: 4rem;
+    width: 3rem;
 }
 
-
+/* Lo basico para que no se rompa en mobile */
 @media screen and (max-width: 600px) {
-
     .modal,
     .modal form input,
     #form input{
         width: 100%;
     }
-
 }

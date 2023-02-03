@@ -9,7 +9,8 @@ Login:
     Mientras cumpla que:
         - No existe un usuario con el mismo nombre
         - El mail ingresado no esté registrado con otro usuario
-        - Y que coincidan las contraseñas ingresadas
+        - Coincidan las contraseñas ingresadas
+        - Edad mayor de 18
 */
 
 //cargo en una variable el contenido del Local Storage
@@ -93,6 +94,7 @@ info.addEventListener("click", () => {
 //boton de cambiar tema
 const theme = document.getElementById("btn-theme");
 theme.addEventListener("click", () => {
+    //
     const root = document.querySelector(":root");
 
     if(theme.getAttribute("darkMode") == "true"){
@@ -104,7 +106,6 @@ theme.addEventListener("click", () => {
         root.style.setProperty("--primaryDark", "#86C8BC");
         root.style.setProperty("--brighter", "#FFF6BD");
         root.style.setProperty("--exit", "#FFD4B2");
-        
     }else {
         //darkmode (original)
         theme.setAttribute("darkMode", "true");
@@ -114,7 +115,6 @@ theme.addEventListener("click", () => {
         root.style.setProperty("--primaryDark", "#03001C");
         root.style.setProperty("--brighter", "#B6EADA");
         root.style.setProperty("--exit", "#5B8FB9");
-
     }
     
 });
