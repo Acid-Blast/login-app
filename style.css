@@ -1,8 +1,8 @@
+/* variables */
 :root{
-    --version: "v1.12.3";
+    --version: "v1.12.4";
     --input-back: #92899566;
     --dark: #11091a;
-
     --font-color: #eee;
     --primary: #301E67;
     --primaryDark: #03001C;
@@ -10,11 +10,13 @@
     --exit: #5B8FB9;
 }
 
+/* reset */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: all .3s;
+    -webkit-tap-highlight-color: #0000;
 }
 
 body{
@@ -55,7 +57,6 @@ header nav div a{
 }
 
 header nav div h1{
-    transition: all .3s;
     color: var(--font-color);
 }
 
@@ -257,8 +258,15 @@ footer{
     font-size: .7rem;
 }
 
+footer h4{
+    color: var(--font-color);
+
+}
+
 footer h4::after{
     content: var(--version);
+    color: var(--font-color);
+    transition: all .3s;
 }
 
 aside{
@@ -276,20 +284,15 @@ aside .dark-mode{
     height: 3rem;
     border: none;
     border-radius: 100%;
-    background-color: var(--primaryDark);
-    color: var(--font-color);
-    text-shadow: 0 1px 4px var(--dark);
-    font-size: .9rem;
-    font-weight: bold;
+    background: transparent;
     margin-left: 2rem;
-    box-shadow:  0 0 25px var(--dark);
+    filter: drop-shadow(0 0 15px var(--primaryDark));
 }
 
 aside #btn-theme:hover{
     cursor: pointer;
     opacity: .8;
-    box-shadow: 0 0 15px var(--dark),
-    inset 0 0 25px black;
+    box-shadow: none;
 }
 button:active,
 input[type="submit"]:active{

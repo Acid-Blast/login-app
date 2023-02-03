@@ -3,6 +3,9 @@ PreEntrega 3
 Marcelo Falasca
 
 Login:
+    La aplicacion es un simulador de Login, crea usuario e inicia sesion.
+    Proximamente esté login va a llevar a la aplicación de la entrega final.
+
     El sistema compara el usuario y contraseña ingresado contra los datos almacenados en el localStorage.
     Si el usuario no existe, no entra.
     Cuenta con la opcion de registrarse para guardar al usuario en el localStorage
@@ -35,7 +38,7 @@ btnRegistro.addEventListener("click", (e) => {
 });
 
 
-//Registro - Envia los datos para validarlos y guardar ususario
+//Registro - Valida los datos y guarda el usuario
 const formReg = document.getElementById("formReg");
 formReg.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -50,18 +53,18 @@ formReg.addEventListener("submit", (e) => {
 
     if(validarUsuario(user.value, mail.value, pass.value, pass2.value, date.value)){
         guardarUsuario(user.value, mail.value, pass.value, date.value, edad);
-        createModal("Nuevo Usuario", `
-            Usuario creado con exito <br><br>
+        createModal("Usuario creado con exito", `
+            Nuevo usuario <br><br>
             Nombre: <i>${user.value}</i> <br>
             Correo: <i>${mail.value}</i> <br>
             Edad: <i>${edad}</i>
         `);
-        dialog.close();
+         dialog.close();
         limpiarForm(formReg);
     }
 });
 
-//login
+//Login - valida el usuario e inicia sesion
 const miForm = document.getElementById("form");
     miForm.addEventListener("submit", (e) => {
 
@@ -74,6 +77,7 @@ const miForm = document.getElementById("form");
         e.preventDefault();
         createModal("Error", "Usuario o contraseña Incorrectos")
     }else{
+        //simula inicio de sesion
         e.preventDefault();
         createModal("Iniciando sesion...",`
             Conectando usuario: <i>${user.value}</i><br>
@@ -96,18 +100,9 @@ info.addEventListener("click", () => {
 const theme = document.getElementById("btn-theme");
 theme.addEventListener("click", () => {
     const root = document.querySelector(":root");
-
-    const estilosLight = [
-        
-    ];
-
-    const estilosDark = [
-        
-    ];
-    
     
     if(theme.getAttribute("darkMode") == "false"){
-        //darkmode (original)
+        //darkmode (default)
         theme.setAttribute("darkMode", "true");
         
         root.style.setProperty("--font-color", "#eee");
@@ -116,7 +111,7 @@ theme.addEventListener("click", () => {
         root.style.setProperty("--brighter", "#B6EADA");
         root.style.setProperty("--exit", "#5B8FB9");
         document.getElementById("dark-mode-img").style.filter = "invert(0)";
-        document.getElementById("dark-mode-img").style.transform = "rotate(-180deg)";
+        document.getElementById("dark-mode-img").style.transform = "scaleX(1)";
     }else {
         //lightmode
         theme.setAttribute("darkMode", "false");
@@ -127,7 +122,7 @@ theme.addEventListener("click", () => {
         root.style.setProperty("--brighter", "#FFF6BD");
         root.style.setProperty("--exit", "#FFD4B2");
         document.getElementById("dark-mode-img").style.filter = "invert(1)";
-        document.getElementById("dark-mode-img").style.transform = "rotate(180deg)";
+        document.getElementById("dark-mode-img").style.transform = "scaleX(-1)";
     }
     
 });
@@ -138,11 +133,11 @@ theme.addEventListener("click", () => {
 const guardarUsuario = (user, mail, pass, date, edad) => {
     BBDD.push(new User({_user: user, _mail: mail, _pass: pass, _date: date, _age: edad}));
     localStorage.setItem("users", JSON.stringify(BBDD));
-}
+ }
 
 //devuelve false si no se valida la creacion y true si es valida
 const validarUsuario = (user, mail, pass, pass2, date) => {
-    let error = "Error en registro";
+     let error = "Error en registro";
 
     if(BBDD.find(e => e._user === user) !== undefined){
         createModal(error, ` El usuario "${user}" ya está registrado`);
@@ -179,7 +174,7 @@ const createModal = (titulo, mensaje) => {
         modal.removeAttribute(open);
         modal.close();
     });
-}
+ }
 
 //limpia los valores del form
 const limpiarForm = (form) => {
